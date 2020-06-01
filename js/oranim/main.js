@@ -79,7 +79,7 @@ game_main.prototype = {
 			location.reload();
 			if(AdMob) AdMob.showInterstitial();
 		}, this);
-		power_reset.scale.set(.5, .5);
+		power_reset.scale.set(.52, .52);
 		
      /*   setTimeout(function(){
         	changeAnimal();
@@ -297,7 +297,7 @@ function play_sounds(_keys){
 function loadSounds(){
 	cowSfx = game.add.audio('cow', 0.6, false);
 	elephantSfx = game.add.audio('elephant', 0.7, false);
-	sheepSfx = game.add.audio('sheep', 0.7, false);
+	sheepSfx = game.add.audio('sheep', 0.6, false);
 	catSfx = game.add.audio('cat', 0.8, false);
 	dogSfx = game.add.audio('dog', 0.8, false);
 	monkeySfx = game.add.audio('monkey', 0.8, false);
@@ -309,9 +309,9 @@ function loadSounds(){
 
 	clockSfx = game.add.audio('clock', 0.7, false);
 	
-	musicSfx = game.add.audio('music', 0.7, true);
-	music2Sfx = game.add.audio('music2', 0.7, true);
-	music3Sfx = game.add.audio('music3', 0.7, true);
+	musicSfx = game.add.audio('music', 1, true);
+	music2Sfx = game.add.audio('music2', 1, true);
+	music3Sfx = game.add.audio('music3', 1, true);
 	
 	musics = [musicSfx, music2Sfx, music3Sfx];
         
