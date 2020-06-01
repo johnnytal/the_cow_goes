@@ -9,7 +9,7 @@ var game_main = function(game){
     boxes = [];
     boxesBgs = [];
     items = [];
-    allKeys = [];
+   // allKeys = [];
     
     OFF_SET = 19;
     HIGHLIGHT_COLOR = 0xff0000;
@@ -22,7 +22,8 @@ game_main.prototype = {
     create: function(){
     	loadSounds();
         try{StatusBar.hide;}catch(e){}
-        //initAd();
+        
+        initAd();
     	
     	bg = game.add.image(0, 0, 'bg');
     	bg.alpha = 0.25;
@@ -43,9 +44,9 @@ game_main.prototype = {
     		items.push(sprite);
     	}
     	
-    	for (x = 0; x < soundsArray.length; x++){
+    	/*for (x = 0; x < soundsArray.length; x++){
     		allKeys[x] = soundsArray[x].key;
-    	}
+    	}*/
 
         for (n = 0; n < N_ROWS * N_COLUMNS; n++){
             box = game.add.sprite(0, 0, 'box' + Math.floor(Math.random() * 5));
@@ -76,6 +77,7 @@ game_main.prototype = {
         power_reset = game.add.sprite(1375, 15, 'power_reset');
 		power_reset.inputEnabled = true;
 		power_reset.events.onInputDown.add(function(){
+			power_reset.tint = 0xff00ff;
 			location.reload();
 			if(AdMob) AdMob.showInterstitial();
 		}, this);
@@ -100,11 +102,13 @@ game_main.prototype = {
 function playMusic(){
 	if (playBtn.tint == 0xffffff){
 		playBtn.tint = 0x00ff00;
+		playBtn.scale.set(.95, .98);
 		musics[game.rnd.integerInRange(0, musics.length-1)].mute = false;
 	}
 	else{
 		playBtn.tint = 0xffffff;
 		for (m = 0; m < musics.length; m++){
+			playBtn.scale.set(1, 1);
 			musics[m].mute = true;
 		}
 	}
@@ -295,19 +299,19 @@ function play_sounds(_keys){
 }
 
 function loadSounds(){
-	cowSfx = game.add.audio('cow', 0.6, false);
-	elephantSfx = game.add.audio('elephant', 0.7, false);
-	sheepSfx = game.add.audio('sheep', 0.6, false);
-	catSfx = game.add.audio('cat', 0.8, false);
-	dogSfx = game.add.audio('dog', 0.8, false);
-	monkeySfx = game.add.audio('monkey', 0.8, false);
-	pigSfx = game.add.audio('pig', 0.8, false);
-	chickenSfx = game.add.audio('chicken', 0.9, false);
-	owlSfx = game.add.audio('owl', 1, false);
-	penguinSfx = game.add.audio('penguin', 0.9, false);
-	bearSfx = game.add.audio('bear', 0.8, false);
+	cowSfx = game.add.audio('cow', 0.4, false);
+	elephantSfx = game.add.audio('elephant', 0.5, false);
+	sheepSfx = game.add.audio('sheep', 0.4, false);
+	catSfx = game.add.audio('cat', 0.6, false);
+	dogSfx = game.add.audio('dog', 0.6, false);
+	monkeySfx = game.add.audio('monkey', 0.6, false);
+	pigSfx = game.add.audio('pig', 0.6, false);
+	chickenSfx = game.add.audio('chicken', 0.7, false);
+	owlSfx = game.add.audio('owl', 0.8, false);
+	penguinSfx = game.add.audio('penguin', 0.7, false);
+	bearSfx = game.add.audio('bear', 0.6, false);
 
-	clockSfx = game.add.audio('clock', 0.7, false);
+	clockSfx = game.add.audio('clock', 0.6, false);
 	
 	musicSfx = game.add.audio('music', 1, true);
 	music2Sfx = game.add.audio('music2', 1, true);
